@@ -2,9 +2,10 @@
 This is a React/Next example of "server side pre-rendering".
 
 Project is based on starter template for [Learn Next.js](https://nextjs.org/learn), with
-addition of server api (node js project located in ./demo-node-server) call. 
+addition of server api call (node js project located in ./demo-node-server). 
+To run the node server, execute in command line: `node demo-node-server/post-api.js` 
 
-To run it execute in command line: `npm run dev` 
+To run the project, execute in command line: `npm run dev` 
 That will start the web server on [http://localhost:3000](http://localhost:3000)
 
 ####Next js project structure:
@@ -26,6 +27,7 @@ For data fetching Next.js internally parses couple of methods:
 **Built-In CSS Support**
 - `./pages/_app.js.` we can import main css file into within _app.js 
 - `[name].module.css` name styling can be used for component level
+
 ####Testing
 Testing is based on [Jest.js](https://jestjs.io/en/) and [React preferred way of testing](https://jestjs.io/docs/en/tutorial-react)
 To run tests execute in command line: `jest`
@@ -35,21 +37,50 @@ Testing dependencies:
 ./setupTests.js
 ./tests
 
-./components
-./lib
-./babelrc
-
 ###Project tree structure
 ```
 .
-├── README.md 
+├── README.md
 ├── __mocks__
 │   ├── fileMock.js
 │   └── styleMock.js
-├── component
+├── components
+│   ├── __snapshots__
+│   │   ├── date.test.js.snap
+│   │   ├── layout.test.js.snap
+│   │   └── mainList.test.js.snap
 │   ├── date.js
+│   ├── date.test.js
 │   ├── layout.js
-│   └── layout.module.css
+│   ├── layout.module.css
+│   ├── layout.test.js
+│   ├── mainList.js
+│   ├── mainList.test.js
+│   └── testComponent.js
+├── coverage
+│   ├── clover.xml
+│   ├── coverage-final.json
+│   ├── lcov-report
+│   │   ├── base.css
+│   │   ├── block-navigation.js
+│   │   ├── components
+│   │   │   ├── date.js.html
+│   │   │   ├── index.html
+│   │   │   ├── layout.js.html
+│   │   │   └── mainList.js.html
+│   │   ├── favicon.png
+│   │   ├── index.html
+│   │   ├── lib
+│   │   │   ├── index.html
+│   │   │   └── posts.js.html
+│   │   ├── pages
+│   │   │   ├── index.html
+│   │   │   └── index.js.html
+│   │   ├── prettify.css
+│   │   ├── prettify.js
+│   │   ├── sort-arrow-sprite.png
+│   │   └── sorter.js
+│   └── lcov.info
 ├── demo-node-server
 │   ├── README.md
 │   ├── post-api.js
@@ -58,7 +89,8 @@ Testing dependencies:
 │       └── ssg-ssr.md
 ├── jest.config.js
 ├── lib
-│   └── posts.js
+│   ├── posts.js
+│   └── posts.test.js
 ├── package-lock.json
 ├── package.json
 ├── pages
@@ -76,8 +108,9 @@ Testing dependencies:
 ├── styles
 │   ├── global.css
 │   └── utils.module.css
-├── tests
-│   └── index.test.js
+└── tests
+    └── index.test.js
+
 
 
 
