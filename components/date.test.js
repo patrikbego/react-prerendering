@@ -7,7 +7,6 @@ it('renders date component correctly', () => {
   expect(tree).toMatchSnapshot();
 });
 
-//TODO do not throw error here, it might be confusing in build logs
 it('checks the date string is in right format', () => {
   try {
     render(<DateC dateString={'05 October 2011 14:48 UTC'}/>);
@@ -15,7 +14,7 @@ it('checks the date string is in right format', () => {
     if (e instanceof RangeError) {
       console.log("RangeError caught in test")
     } else {
-      throw e; // let others bubble up
+      throw e;
     }
 
     expect(e.message).toBe("Invalid time value") ;
