@@ -1,4 +1,8 @@
-# TECHNICAL SEARCH ENGINE OPTIMIZATION
+---
+title: "TECHNICAL SEARCH ENGINE OPTIMIZATION"
+date: "2020-11-05"
+---
+
 Search Engine Optimization (SEO) is changing and evolving every year.
 SEO concepts that used to work a couple of years ago might no longer be effective today.
 

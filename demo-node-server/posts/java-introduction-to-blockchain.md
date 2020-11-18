@@ -1,4 +1,7 @@
-# INTRODUCTION TO BLOCKCHAIN IN JAVA
+---
+title: "INTRODUCTION TO BLOCKCHAIN IN JAVA"
+date: "2020-11-15"
+---
 
 A lot has been written about blockchain, but there are very few examples of the technology in action. So to understand it best is to write your own ;)
 
@@ -25,8 +28,8 @@ I will try to quickly and as simple as possible explain the basic concepts behin
 
 Encoding is the process of transforming one format of data into another, so a system or a user can process it.  
 &nbsp;&nbsp;&nbsp;&nbsp;E.g. of encoding types: UTF-8 to ASCII, Base64 ...  
-&nbsp;&nbsp;&nbsp;&nbsp;Practical e.g.: if we encode the string "this is not really a secret" to base64 format, it will generate a encoded output "dGhpcyBpcyBub3QgcmVhbGx5IGEgc2VjcmV0".  
-        This encoded output can then be used to transport data over different protocols and later decoded back into a human-readable format.
+&nbsp;&nbsp;&nbsp;&nbsp;Practical e.g.: if we encode the string "this is not really a secret" to base64 format, it will generate an encoded output "dGhpcyBpcyBub3QgcmVhbGx5IGEgc2VjcmV0".  
+        This encoded output can be used to transport data over different protocols and later decoded back into a human-readable format.
         
 In the JavaChain project, the encoding method is located in the `EncodingUtility` class. In the blockchain, it is used mainly to convert bytes to hexadecimal representations during the mining process. 
 
@@ -48,7 +51,7 @@ More examples of encoding can be found in `src/test/java/com/javachain/util/Enco
 
 Hashing is the process of converting given data into usually a shorter hashed value. A hash value is not reversible.  
 &nbsp;&nbsp;&nbsp;&nbsp;E.g. of hash algorithms: sha-1, md5 , sha-256 (used in BitCoin), SHA-3/Keccak, etc.  
-&nbsp;&nbsp;&nbsp;&nbsp;Practical e.g.: if we run sha-256 on a string "this is secret" it will produce output "37dca33640e56a775653bb63381c114c9790898858036674a25bdf4a34c98ca4"
+&nbsp;&nbsp;&nbsp;&nbsp;Practical e.g.: if we run sha-256 on a string "this is secret" it will produce output "37dca33640e56a775653bb63381c114c9790898858036674a25bdf4a34c98ca4".
 If somebody messes up with that data, then the hash value will be different (for example, the hash is used when we download new software distributions. We run hash on that downloaded package and check it against the given hash. If hashes are the same, then we know that nobody did meddle with that package).
              
 In the JavaChain project, the hashing method is located in HashingUtility class, and it is triggered when we generate a new block. 
@@ -165,7 +168,7 @@ E.g. (b = block; prk = PRIVATE KEY; puk = PUBLIC KEY; s = SIGNATURE)
 
 **WALLET**  
 A cryptocurrency wallet is the main "store" of blocks and credentials linked to users. 
-The keys linked in the wallet are used to encrypt/decrypt and track ownership of transactions.
+The keys, linked in the wallet, are used to encrypt/decrypt and track ownership of transactions.
 Each wallet communicates with another through its protocol  (this is mocked in the JavaChain project).
 
 In JavaChain, each wallet contains: 
@@ -200,17 +203,17 @@ In JavaChain transaction contains:
  
 
 **MINING**  
-Mining is a kind of a core process in the blockchain. It is a process of validating transactions and adding it to the blockchain and solving a "cryptographic puzzle."  
+Mining is a core process in the blockchain. It is a process of validating transactions and adding it to the blockchain and solving a "cryptographic puzzle."  
 To mine a block, miners need to find a nonce.  
 
-In Javachain mining, the method is located in BlockService. 
+In Javachain, the mining method is located in BlockService. 
 ```
 public Block mineBlock(Wallet wallet, List<Transaction> transactions, Block previousBlock)
             throws SignatureException {
 ...
 ```
 
-Here we validate the transactions, previous blocks and mine the nonce.
+In this method, we validate the transactions, previous blocks and mine the nonce.
 A nonce is a dynamic number that is used in the blockchain "proof of work" algorithm. 
 It is a number added to a hashed or encrypted block and is becoming more significant with each block 
 (the computational power needed to mine the block is becoming more and more complicated).

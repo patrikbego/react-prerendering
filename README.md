@@ -1,4 +1,4 @@
-### DYNAMIC PRE-RENDERING WITH REACTJS 
+### DYNAMIC PRE-RENDERING WITH NEXT AND REACT
 
 This is a React/Next example of "server side pre-rendering".
 
@@ -10,10 +10,12 @@ To run the project, execute in command line: `npm run start` That will start the
 
 #### Next js project structure: ./pages (Static generation and server-side rendering )
 
-Routing: If you create pages/about.js that exports a React component like below, it will be accessible at /about.
+Routing: If you create pages/about.js that exports a React component like below, it will be accessible at `/about`.
 Dynamic routing: If you create a file called pages/posts/[id].js, then it will be accessible at posts/1, posts/2, etc.
-./pages/index.js (Static generation and server-side rendering main page) 
-./public (Static file serving. Files inside public can then be referenced by your code starting from the base URL (/).)
+`./pages/index.js` (Static generation and server-side rendering main page) 
+`./public` (Static file serving. Files inside public can then be referenced by your code starting from the base URL (/).)
+`./pages/api` next automatically generates a URL endpoint that matches /api/<folder>/<file>. 
+For example, if we create a file in pages/api/users.js, our app will expose an /api/users endpoint.
 
 Data fetching: for data fetching Next.js internally parses couple of methods: 
  - getStaticProps method is used mainly to render pages ahead of users request. It needs to define a list of paths that have to be rendered to HTML at build time.
