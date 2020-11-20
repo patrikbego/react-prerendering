@@ -4,10 +4,10 @@ import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import React from 'react'
 
-const name = '[Your Name]'
-export const siteTitle = 'Next.js Sample Website'
-
-export default function Layout({children, home}) {
+export default function Layout({children, home, user}) {
+  console.log(children);
+  console.log(home);
+  console.log(user);
   return (
     <div className={styles.container}>
       <Head>
@@ -19,10 +19,10 @@ export default function Layout({children, home}) {
         <meta
           property="og:image"
           content={`https://og-image.now.sh/${encodeURI(
-            siteTitle
+            user.siteTitle
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
-        <meta name="og:title" content={siteTitle}/>
+        <meta name="og:title" content={user.siteTitle}/>
         <meta name="twitter:card" content="summary_large_image"/>
         <title>Test 200</title>
       </Head>
@@ -32,9 +32,9 @@ export default function Layout({children, home}) {
             <img
               src={"/images/profile.jpg"}
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={name}
+              alt={user.name}
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className={utilStyles.heading2Xl}>{user.name}</h1>
           </>
         ) : (
           <>
@@ -43,19 +43,19 @@ export default function Layout({children, home}) {
                 <img
                   src="/images/profile.jpg"
                   className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
+                  alt={user.name}
                 />
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a className={utilStyles.colorInherit}>{user.name}</a>
               </Link>
             </h2>
           </>
         )}
       </header>
-      <main>{children}</main>
+      <main>{children} test1</main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">

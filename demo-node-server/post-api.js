@@ -13,7 +13,7 @@ function readFiles() {
   try {
     return fs.promises.readdir('posts');
   } catch (err) {
-    console.error('Error occured while reading directory!', err);
+    console.error('Error occurred while reading directory!', err);
   }
 }
 
@@ -43,23 +43,23 @@ app.get('/api/post/:fileName', function (req, res, next) {
 });
 
 app.use('/api', function (req, res, next) {
-  let key = req.query['api-key'];
-
-  if (!key) return next(error(400, 'api key required'));
-
-  if (!~apiKeys.indexOf(key)) return next(error(401, 'invalid api key'));
-
-  req.key = key;
+  // let key = req.query['api-key'];
+  //
+  // if (!key) return next(error(400, 'api key required'));
+  //
+  // if (!~apiKeys.indexOf(key)) return next(error(401, 'invalid api key'));
+  //
+  // req.key = key;
   next();
 });
 
 let apiKeys = ['foo', 'bar', 'baz'];
 
-// example: http://localhost:3000/api/user/patrikbego
+// example: http://localhost:8080/api/user/patrikbego
 app.get('/api/user/:username', function (req, res, next) {
   let name = req.params.username;
   //findByUsername
-  let user = {name: 'Patrik', surname: 'Bego', about:'Philosopher|Entrepreneur|Code and Life hacker'};
+  let user = {name: 'Patrik', surname: 'Bego', about:'Philosopher|Entrepreneur|Code and Life hacker', siteTitle: 'My new blog'};
 
   if (user) res.send(user);
   else next();

@@ -1,22 +1,19 @@
 import Head from 'next/head'
 import React from 'react';
-import Layout, {siteTitle} from '../components/layout'
+import Layout from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import {getSortedPostsData} from '../lib/posts'
 import MainList from "../components/mainList";
+import {getUserData} from "../lib/users";
 
-export default function Home({allPostsData}) {
+export default function Home({allPostsData, blogger}) {
   return (
-    <Layout home>
+    <Layout allPostsData home user={blogger}>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{blogger.siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+        <p>{blogger.about}</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -28,9 +25,11 @@ export default function Home({allPostsData}) {
 
 export async function getServerSideProps() {
   let allPostsData = await getSortedPostsData();
+  let blogger = await getUserData('patrik.bego'); //TODO hard coded for now
   return {
     props: {
-      allPostsData
+      allPostsData,
+      blogger
     }
   }
 }

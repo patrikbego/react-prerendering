@@ -6,7 +6,8 @@ Project is based on starter template for Learn Next.js, with addition of server 
 
 To run the node server, execute in command line: `node demo-node-server/post-api.js`
 
-To run the project, execute in command line: `npm run start` That will start the web server on http://localhost:3000
+To run the project, execute in command line: `npm run start` (for debug mode : `npm run dev`).
+That will start the web server on http://localhost:3000
 
 #### Next js project structure: ./pages (Static generation and server-side rendering )
 
