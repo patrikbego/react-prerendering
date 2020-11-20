@@ -1,0 +1,19 @@
+{
+  "name": "demo-node-server",
+  "version": "1.0.0",
+  "description": "Simple demo server",
+  "main": "post-api.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Demo",
+    "Node",
+    "Server"
+  ],
+  "author": "Patrik Bego",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
