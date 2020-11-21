@@ -1,11 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import App from "../pages/index";
+import App from "../src/pages/index";
 import React from 'react'
-import {getServerSideProps} from "../pages";
+import {getServerSideProps} from "../src/pages";
+
+const user = {name: 'Patrik', surname: 'Bego', about:'Philosopher|Entrepreneur|Code and Life hacker', siteTitle: 'My new blog'};
 
 describe("App", () => {
   it("renders empty list without crashing", () => {
-    render(<App />);
+    render(<App blogger={user}/>);
     expect(
       screen.getByText("Loading ...")
     ).toBeInTheDocument();
@@ -14,9 +16,9 @@ describe("App", () => {
 
   it("renders without crashing", () => {
 
-    const list1 = [{id: 'test.md', date: '2021-01-01', title: 'test'}]
+    const list1 = [{id: 'test.md', date: '2021-01-01', title: 'test'}];
 
-    render(<App allPostsData={list1}/>);
+    render(<App allPostsData={list1} blogger={user}/>);
     expect(
       screen.getByText("January 1, 2021")
     ).toBeInTheDocument();

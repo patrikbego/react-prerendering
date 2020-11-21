@@ -1,8 +1,10 @@
-### DYNAMIC PRE-RENDERING WITH REACTJS 
+### DYNAMIC PRE-RENDERING WITH REACT AND NEXT
 
-This is a React/Next example of "server side pre-rendering".
+This is a [React](reactjs.com)/[Next](nextjs.com) example of "server side pre-rendering".
 
 Project is based on starter template for Learn Next.js, with addition of server api call (node js project located in ./demo-node-server). 
+Some guides regarding next:
+    You can fairly say that at the minimum you’ll need a “pages/” directory and “index.js(x)” file within it. If you were to create overrides for your app or document then you have an “_app.js(x)” and a “_document.js(x)” files also inside the “pages/” folder. The “public/” directory is another folder that Next.JS looks into for static files to be emitted into the final build directory. Other than these files and directories, everything goes.
 
 To run the node server, execute in command line: `node demo-node-server/post-api.js`
 
@@ -51,30 +53,6 @@ Testing dependencies: ./mocks ./setupTests.js ./tests
 │   ├── mainList.js
 │   ├── mainList.test.js
 │   └── testComponent.js
-├── coverage
-│   ├── clover.xml
-│   ├── coverage-final.json
-│   ├── lcov-report
-│   │   ├── base.css
-│   │   ├── block-navigation.js
-│   │   ├── components
-│   │   │   ├── date.js.html
-│   │   │   ├── index.html
-│   │   │   ├── layout.js.html
-│   │   │   └── mainList.js.html
-│   │   ├── favicon.png
-│   │   ├── index.html
-│   │   ├── lib
-│   │   │   ├── index.html
-│   │   │   └── posts.js.html
-│   │   ├── pages
-│   │   │   ├── index.html
-│   │   │   └── index.js.html
-│   │   ├── prettify.css
-│   │   ├── prettify.js
-│   │   ├── sort-arrow-sprite.png
-│   │   └── sorter.js
-│   └── lcov.info
 ├── demo-node-server
 │   ├── README.md
 │   ├── post-api.js

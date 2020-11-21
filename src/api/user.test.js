@@ -12,6 +12,6 @@ it('tests get non existing user', async () => {
   let mockResponse1 = JSON.stringify({});
   fetch.mockResponseOnce(mockResponse1);
   const response = await getUserData('test');
-  expect(response.name).toEqual("Patrik")
-  expect(response.surname).toEqual("Bego")
+  expect(response.name).toEqual(undefined)
+  expect(response.surname).toEqual(undefined)
 });

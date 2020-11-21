@@ -1,11 +1,11 @@
 import Layout from '../../components/layout'
-import {getPostData} from '../../lib/posts'
+import {getPostData} from '../../api/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import React from "react";
 import ShareFooter from "../../components/shareFooter";
-import {getUserData} from "../../lib/users";
+import {getUserData} from "../../api/users";
 
 export default function Post({postData, blogger}) {
   return (

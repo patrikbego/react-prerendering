@@ -2,9 +2,9 @@ import Head from 'next/head'
 import React from 'react';
 import Layout from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import {getSortedPostsData} from '../lib/posts'
+import {getSortedPostsData} from '../api/posts'
 import MainList from "../components/mainList";
-import {getUserData} from "../lib/users";
+import {getUserData} from "../api/users";
 
 export default function Home({allPostsData, blogger}) {
   return (
