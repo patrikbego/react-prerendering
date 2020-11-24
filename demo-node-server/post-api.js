@@ -17,6 +17,7 @@ function readFiles() {
   }
 }
 
+// example: http://localhost:8080/api/post/names
 app.get('/api/post/names', function (req, res, next) {
   readFiles().then((fileArray) => {
     console.log(fileArray);
@@ -58,7 +59,7 @@ let apiKeys = ['foo', 'bar', 'baz'];
 // example: http://localhost:8080/api/user/patrikbego
 app.get('/api/user/:username', function (req, res, next) {
   let name = req.params.username;
-  //findByUsername
+  //findByUsername TODO implement
   let user = {name: 'Patrik', surname: 'Bego', about:'Philosopher|Entrepreneur|Code and Life hacker', siteTitle: 'My new blog'};
 
   if (user) res.send(user);
@@ -66,18 +67,16 @@ app.get('/api/user/:username', function (req, res, next) {
 });
 
 app.use(function (err, req, res, next) {
-  // whatever you want here, feel free to populate
-  // properties on `err` to treat it differently in here.
   res.status(err.status || 500);
   res.send({error: err.message});
 });
 
 app.use(function (req, res) {
   res.status(404);
-  res.send({error: "Lame, can't find that"});
+  res.send({error: "I find your lack of navigation disturbing!"});
 });
 
 if (!module.parent) {
   app.listen(8080);
-  console.log('Express started on port 3000');
+  console.log('Express started on port 8080');
 }

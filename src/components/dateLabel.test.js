@@ -1,5 +1,5 @@
 import React from 'react';
-import DateC from './date';
+import DateC from './dateLabel';
 import {render} from "@testing-library/react";
 
 it('renders date component correctly', () => {
@@ -19,6 +19,11 @@ it('checks the date string is in right format', () => {
 
     expect(e.message).toBe("Invalid time value") ;
   }
+});
+
+it('checks empty date', () => {
+  const tree = render(<DateC/>);
+  expect(tree).toMatchSnapshot();
 });
 
 it('checks the date string is in right format 1', () => {

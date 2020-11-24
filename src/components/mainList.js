@@ -1,6 +1,6 @@
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
-import Date from "./date";
+import DateLabel from "./dateLabel";
 import React from 'react';
 
 export default function MainList({allPostsData}) {
@@ -14,7 +14,7 @@ export default function MainList({allPostsData}) {
             </Link>
             <br/>
             <small className={utilStyles.lightText}>
-              <Date dateString={date}/>
+              <DateLabel dateString={date}/>
             </small>
           </li>
         ))}

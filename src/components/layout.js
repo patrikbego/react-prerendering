@@ -3,6 +3,7 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 export default function Layout({children, home, user}) {
   console.log(children);
@@ -29,10 +30,12 @@ export default function Layout({children, home, user}) {
       <header className={styles.header}>
         {home ? (
           <>
-            <img
-              src={"/images/profile.jpg"}
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
+            <Image
+              src="/images/profile.jpg"
+              // className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
               alt={user.name}
+              width={500}
+              height={500}
             />
             <h1 className={utilStyles.heading2Xl}>{user.name}</h1>
           </>
@@ -40,10 +43,12 @@ export default function Layout({children, home, user}) {
           <>
             <Link href="/">
               <a>
-                <img
+                <Image
                   src="/images/profile.jpg"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
+                  // className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                   alt={user.name}
+                  width={500}
+                  height={500}
                 />
               </a>
             </Link>

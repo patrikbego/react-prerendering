@@ -60,12 +60,12 @@ Testing dependencies: ./mocks ./setupTests.js ./tests
 │   │   └── users.js
 │   ├── components
 │   │   ├── __snapshots__
-│   │   │   ├── date.test.js.snap
+│   │   │   ├── dateLabel.test.js.snap
 │   │   │   ├── layout.test.js.snap
 │   │   │   ├── mainList.test.js.snap
 │   │   │   └── shareFooter.test.js.snap
 │   │   ├── date.js
-│   │   ├── date.test.js
+│   │   ├── dateLabel.test.js
 │   │   ├── layout.js
 │   │   ├── layout.module.css
 │   │   ├── layout.test.js

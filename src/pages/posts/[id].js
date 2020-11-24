@@ -1,7 +1,7 @@
 import Layout from '../../components/layout'
 import {getPostData} from '../../api/posts'
 import Head from 'next/head'
-import Date from '../../components/date'
+import DateLabel from '../../components/dateLabel'
 import utilStyles from '../../styles/utils.module.css'
 import React from "react";
 import ShareFooter from "../../components/shareFooter";
@@ -16,7 +16,7 @@ export default function Post({postData, blogger}) {
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>
-          <Date dateString={postData.date}/>
+          <DateLabel dateString={postData.date}/>
         </div>
         <div dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
       </article>
