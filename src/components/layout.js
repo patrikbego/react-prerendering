@@ -5,10 +5,10 @@ import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 
-export default function Layout({children, home, user}) {
+export default function Layout({children, home, user: blogger}) {
   console.log(children);
   console.log(home);
-  console.log(user);
+  console.log(blogger);
   return (
     <div className={styles.container}>
       <Head>
@@ -20,10 +20,10 @@ export default function Layout({children, home, user}) {
         <meta
           property="og:image"
           content={`https://og-image.now.sh/${encodeURI(
-            user.siteTitle
+            blogger.siteTitle
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
-        <meta name="og:title" content={user.siteTitle}/>
+        <meta name="og:title" content={blogger.siteTitle}/>
         <meta name="twitter:card" content="summary_large_image"/>
         <title>Test 200</title>
       </Head>
@@ -33,11 +33,11 @@ export default function Layout({children, home, user}) {
             <Image
               src="/images/profile.jpg"
               // className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={user.name}
+              alt={blogger.name}
               width={500}
               height={500}
             />
-            <h1 className={utilStyles.heading2Xl}>{user.name}</h1>
+            <h1 className={utilStyles.heading2Xl}>{blogger.name}</h1>
           </>
         ) : (
           <>
@@ -46,7 +46,7 @@ export default function Layout({children, home, user}) {
                 <Image
                   src="/images/profile.jpg"
                   // className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-                  alt={user.name}
+                  alt={blogger.name}
                   width={500}
                   height={500}
                 />
@@ -54,7 +54,7 @@ export default function Layout({children, home, user}) {
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{user.name}</a>
+                <a className={utilStyles.colorInherit}>{blogger.name}</a>
               </Link>
             </h2>
           </>

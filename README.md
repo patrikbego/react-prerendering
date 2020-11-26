@@ -80,13 +80,13 @@ Testing dependencies: ./mocks ./setupTests.js ./tests
 │   │   ├── index.js
 │   │   └── posts
 │   │       └── [id].js
-│   ├── public
-│   │   ├── favicon.ico
-│   │   └── images
-│   │       └── profile.jpg
 │   └── styles
 │       ├── global.css
 │       └── utils.module.css
+├── public
+│   ├── favicon.ico
+│   └── images
+│       └── profile.jpg
 └── tests
     ├── __mocks__
     │   ├── fileMock.js
