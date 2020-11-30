@@ -6,9 +6,9 @@ import {getSortedPostsData} from '../api/posts'
 import MainList from "../components/mainList";
 import {getUserData} from "../api/users";
 
-export default function Home({allPostsData, blogger}) {
+export default function Home({postsData, blogger}) {
   return (
-    <Layout allPostsData home user={blogger}>
+    <Layout postsData home user={blogger}>
       <Head>
         <title>{blogger.siteTitle}</title>
       </Head>
@@ -17,18 +17,18 @@ export default function Home({allPostsData, blogger}) {
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
-        <MainList allPostsData={allPostsData}/>
+        <MainList postsData={postsData}/>
       </section>
     </Layout>
   )
 }
 
 export async function getServerSideProps() {
-  let allPostsData = await getSortedPostsData();
+  let postsData = await getSortedPostsData();
   let blogger = await getUserData('patrik.bego'); //TODO hard coded for now
   return {
     props: {
-      allPostsData,
+      postsData,
       blogger
     }
   }

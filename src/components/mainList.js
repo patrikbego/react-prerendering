@@ -3,11 +3,11 @@ import Link from "next/link";
 import DateLabel from "./dateLabel";
 import React from 'react';
 
-export default function MainList({allPostsData}) {
-  if (allPostsData) {
+export default function MainList({postsData}) {
+  if (postsData) {
     return (
       <ul className={utilStyles.list}>
-        {allPostsData.map(({id, date, title}) => (
+        {postsData.map(({id, date, title}) => (
           <li className={utilStyles.listItem} key={id}>
             <Link href="/posts/[id]" as={`/posts/${id}`}>
               <a>{title}</a>

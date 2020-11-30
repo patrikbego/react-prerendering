@@ -14,7 +14,7 @@ it('renders empty mainList component correctly', () => {
 
 it('renders mainList component correctly', () => {
   const list1 = [{id: 'test.md', date: '2020-01-01', title: 'test'}]
-  const tree = render(<MainList allPostsData={list1}/>);
+  const tree = render(<MainList postsData={list1}/>);
   expect(tree).toMatchSnapshot();
 
 

@@ -1,19 +1,21 @@
-# DYNAMIC PRE-RENDERING WITH REACT AND NEXT
-
-In the previous blog, [Technical Search Engine Optimization](https://medium.com/patrik-bego/technical-search-engine-optimization-717ccc73aa8b), I was describing concepts and ways to achieve good Search Engine Optimization. In this blog, I will show you how to accomplish that with [Reactjs](reactjs.com)/[Nextjs](nextjs.com) server-side rendering (SSR).
+---
+title: "DYNAMIC PRE-RENDERING WITH REACT AND NEXT"
+date: "2020-11-29"
+---
+In the previous blog, [Technical Search Engine Optimization](https://medium.com/patrik-bego/technical-search-engine-optimization-717ccc73aa8b), I described concepts and ways to achieve good Search Engine Optimization. In this blog, I will show you how to accomplish that with [Reactjs](reactjs.com)/[Nextjs](nextjs.com) server-side rendering (SSR).
 
 For our POC, we will build a Blog web-app which will read the data from Node.js Rest API and pre-render React.js components with Next.js on the client-side. 
 
-The whole project is located [here](https://github.com/patrikbego/react-prerendering) and if you want to run it locally, you have to start Node.js server with the command: `node demo-node-server/post-api.js`. This will start a server on http://localhost:8080.
+The whole project is located on github, [here](https://github.com/patrikbego/react-prerendering) If you want to run it locally, you have to start Node.js server with the command: `node demo-node-server/post-api.js`. This will start a server on http://localhost:8080 and expose basic Rest API.
 
-To run the frontend, execute in the command line: `npm run start` (for debug mode: `npm run dev`).
-That will start the Nextjs server, and you should be able to open the web-app in the browser on  http://localhost:3000.
+To run the Next.js server and client, execute in the command line: `npm run start` (for debug mode: `npm run dev`).
+That will start the server, and you should be able to open the web-app in the browser on  http://localhost:3000.
 
-#### Next js project structure: 
-Before we dive into the code, let us just quickly go through a couple of Next.js guidelines we will use in this project.
-Next.js is a framework, and for it to work as intended, we need to follow specific project structure. The minimum required is "./pages" directory and "index.js" file in it. If you were to create overrides for your app or document, then you can do that inside "_app.js" and a "_document.js" files (also inside the "./pages" folder). The "./public" directory is another folder that Next.JS looks into for static files to be emitted into the final build directory.
+#### Next.js project structure: 
+Before we dive into the code, let us just quickly go through a couple of Next.js guidelines that we will use in this project.
+Next.js is a framework, and for it to work as intended, we need to follow specific project structure. The minimum required is "./pages" directory and "index.js" file in it. If you were to create overrides for your app or document, then you can do that inside "_app.js" and a "_document.js" files (also inside the "./pages" folder). The "./public" directory is another folder that Next.js looks into for static files to be emitted into the final build directory.
 
-For, e.g. our project structure looks like this:
+For e.g. our project structure looks like this:
 ```
 .
 ├── README.md
@@ -30,13 +32,13 @@ For, e.g. our project structure looks like this:
 ├── package.json
 ├── src
 │   ├── api
-│   │   ├── internal-post.js
+│   │   ├── internalPost.js
 │   │   ├── posts.js
 │   │   ├── posts.test.js
 │   │   ├── user.test.js
 │   │   └── users.js
 │   ├── components
-│   │   ├── date.js
+│   │   ├── dateLabel.js
 │   │   ├── dateLabel.test.js
 │   │   ├── layout.js
 │   │   ├── layout.module.css
@@ -69,7 +71,7 @@ For, e.g. our project structure looks like this:
 ```
 `Pages` folder can be located in either root folder or src, but not in both.
 
-#### Next.js features (used in this demo)
+#### Nextjs features (used in this demo)
 Next.js has quite a few features. Here we will mainly focus on the retrieving dynamic content from the server. 
   
 **Routing**
@@ -79,9 +81,9 @@ In our case index.js contains pure React components and Next.js method `getServe
 We will look into ways how to fetch data below and got a bit more into details what actually happens in `getServerSideProps`.
 
 ```javascript
-export default function Home({allPostsData, blogger}) {
+export default function Home({postsData, blogger}) {
   return (
-    <Layout allPostsData home user={blogger}>
+    <Layout postsData home user={blogger}>
       <Head>
         <title>{blogger.siteTitle}</title>
       </Head>
@@ -90,18 +92,18 @@ export default function Home({allPostsData, blogger}) {
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
-        <MainList allPostsData={allPostsData}/>
+        <MainList postsData={postsData}/>
       </section>
     </Layout>
   )
 }
 
 export async function getServerSideProps() {
-  let allPostsData = await getSortedPostsData();
+  let postsData = await getSortedPostsData();
   let blogger = await getUserData('blogger.nr1'); 
   return {
     props: {
-      allPostsData,
+      postsData,
       blogger
     }
   }

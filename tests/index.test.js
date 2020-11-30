@@ -18,7 +18,7 @@ describe("App", () => {
 
     const list1 = [{id: 'test.md', date: '2021-01-01', title: 'test'}];
 
-    render(<App allPostsData={list1} blogger={user}/>);
+    render(<App postsData={list1} blogger={user}/>);
     expect(
       screen.getByText("January 1, 2021")
     ).toBeInTheDocument();
@@ -33,6 +33,6 @@ describe("App", () => {
     let mockResponse = JSON.stringify({mddata: "test"});
     fetch.mockResponseOnce(mockResponse);
     const response = await getServerSideProps();
-    expect(response.props.allPostsData[0].id).toEqual("test")
+    expect(response.props.postsData[0].id).toEqual("test")
   });
 });

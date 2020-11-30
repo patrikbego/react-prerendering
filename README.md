@@ -53,7 +53,7 @@ Testing dependencies: ./mocks ./setupTests.js ./tests
 ├── package.json
 ├── src
 │   ├── api
-│   │   ├── internal-post.js
+│   │   ├── internalPost.js
 │   │   ├── posts.js
 │   │   ├── posts.test.js
 │   │   ├── user.test.js
