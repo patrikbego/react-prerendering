@@ -9,6 +9,13 @@ To run the node server, execute in command line: `node demo-node-server/post-api
 To run the project, execute in command line: `npm run start` (for debug mode : `npm run dev`).
 That will start the web server on http://localhost:3000
 
+To run it with Docker: 
+    - `docker build -t next-blog .`  
+    - `docker build -t next-blog-api demo-node-server`  
+    - `docker network create --driver=bridge next-net`  
+    - `docker run -d --name next-blog-api --net=next-net -p 8888:8080 next-blog-api`  
+    - `docker run -d --net=next-net -p 3002:3000 next-blog`  
+
 #### Next js project structure: ./pages (Static generation and server-side rendering )
 Some guides regarding next:
     - The minimum required is “pages/” directory and “index.js” in it. 
@@ -41,56 +48,56 @@ Testing dependencies: ./mocks ./setupTests.js ./tests
 .
 ├── README.md
 ├── demo-node-server
-│   ├── README.md
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── post-api.js
-│   └── posts
-│       ├── java-introduction-to-blockchain.md
-│       └── techical-search-engine-optimization.md
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── post-api.js
+│   └── posts
+│       ├── java-introduction-to-blockchain.md
+│       └── techical-search-engine-optimization.md
 ├── jest.config.js
 ├── package-lock.json
 ├── package.json
 ├── src
-│   ├── api
-│   │   ├── internalPost.js
-│   │   ├── posts.js
-│   │   ├── posts.test.js
-│   │   ├── user.test.js
-│   │   └── users.js
-│   ├── components
-│   │   ├── __snapshots__
-│   │   │   ├── dateLabel.test.js.snap
-│   │   │   ├── layout.test.js.snap
-│   │   │   ├── mainList.test.js.snap
-│   │   │   └── shareFooter.test.js.snap
-│   │   ├── date.js
-│   │   ├── dateLabel.test.js
-│   │   ├── layout.js
-│   │   ├── layout.module.css
-│   │   ├── layout.test.js
-│   │   ├── mainList.js
-│   │   ├── mainList.test.js
-│   │   ├── shareFooter.js
-│   │   ├── shareFooter.module.css
-│   │   ├── shareFooter.test.js
-│   │   └── testComponent.js
-│   ├── pages
-│   │   ├── _app.js
-│   │   ├── index.js
-│   │   └── posts
-│   │       └── [id].js
-│   └── styles
-│       ├── global.css
-│       └── utils.module.css
+│   ├── api
+│   │   ├── internal-post.js
+│   │   ├── posts.js
+│   │   ├── posts.test.js
+│   │   ├── user.test.js
+│   │   └── users.js
+│   ├── components
+│   │   ├── __snapshots__
+│   │   │   ├── dateLabel.test.js.snap
+│   │   │   ├── layout.test.js.snap
+│   │   │   ├── mainList.test.js.snap
+│   │   │   └── shareFooter.test.js.snap
+│   │   ├── date.js
+│   │   ├── dateLabel.test.js
+│   │   ├── layout.js
+│   │   ├── layout.module.css
+│   │   ├── layout.test.js
+│   │   ├── mainList.js
+│   │   ├── mainList.test.js
+│   │   ├── shareFooter.js
+│   │   ├── shareFooter.module.css
+│   │   ├── shareFooter.test.js
+│   │   └── testComponent.js
+│   ├── pages
+│   │   ├── _app.js
+│   │   ├── index.js
+│   │   └── posts
+│   │       └── [id].js
+│   └── styles
+│       ├── global.css
+│       └── utils.module.css
 ├── public
-│   ├── favicon.ico
-│   └── images
-│       └── profile.jpg
+│   ├── favicon.ico
+│   └── images
+│       └── profile.jpg
 └── tests
     ├── __mocks__
-    │   ├── fileMock.js
-    │   └── styleMock.js
+    │   ├── fileMock.js
+    │   └── styleMock.js
     ├── index.test.js
     └── setupTests.js
 
