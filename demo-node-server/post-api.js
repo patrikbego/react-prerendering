@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require("fs");
+const path = require("path");
 
 const app = module.exports = express();
 
@@ -11,7 +12,7 @@ function error(status, msg) {
 
 function readFiles() {
   try {
-    return fs.promises.readdir('posts');
+    return fs.promises.readdir(path.resolve(__dirname, 'posts'));
   } catch (err) {
     console.error('Error occurred while reading directory!', err);
   }
@@ -21,12 +22,16 @@ function readFiles() {
 app.get('/api/post/names', function (req, res, next) {
   readFiles().then((fileArray) => {
     console.log(fileArray);
+    console.log(process.env.MY_VARIABLE);
 
     let jsonObject = {};
     for (const fileName in fileArray) {
       jsonObject[fileName] = fileArray[fileName];
     }
     return res.end(JSON.stringify(jsonObject));
+  }).catch((err) =>{
+    console.log(err.message)
+    console.log(err.stack)
   });
 
 });
@@ -60,7 +65,12 @@ let apiKeys = ['foo', 'bar', 'baz'];
 app.get('/api/user/:username', function (req, res, next) {
   let name = req.params.username;
   //findByUsername TODO implement
-  let user = {name: 'Patrik', surname: 'Bego', about:'Philosopher|Entrepreneur|Code and Life hacker', siteTitle: 'My new blog'};
+  let user = {
+    name: 'Patrik',
+    surname: 'Bego',
+    about: 'Philosopher|Entrepreneur|Code and Life hacker',
+    siteTitle: 'My new blog'
+  };
 
   if (user) res.send(user);
   else next();

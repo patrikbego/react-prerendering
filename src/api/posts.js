@@ -3,7 +3,7 @@ import remark from 'remark'
 import html from 'remark-html'
 import fetch from 'node-fetch';
 
-let API_BASE_URL = 'http://localhost:8080/api/post'
+let API_BASE_URL = process.env.API_URL + '/api/post'
 
 export async function getSortedPostsData() {
   let fileNames;
@@ -13,10 +13,6 @@ export async function getSortedPostsData() {
     console.log(fileNames);
   } catch (err) {
     console.log(err);
-    API_BASE_URL = 'http://next-blog-api:8080/api/post' // dockers url
-    const res = await fetch(`${API_BASE_URL}/names`)
-    fileNames = await res.json();
-    console.log(fileNames);
   }
 
   let postsData = [];

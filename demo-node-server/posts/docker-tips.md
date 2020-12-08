@@ -34,9 +34,14 @@ CMD ["nc" "-lv" "-p" "5000"]
 - by default docker uses its own bridge network
 - useful to pull ubuntu image and install following networking tools:
 ```
-apt update && apt install -y arp-scan iputils-ping iproute2`
-	- `ip addr show`
-	- `arp-scan --interface=eth0 --localnet
+echo '
+FROM ubuntu:16.04
+RUN apt update && apt install -y arp-scan iputils-ping iproute2
+CMD ["/bin/bash"]' > Dockerfile
+docker build . -t net-tool
+docker run -it net-tool
+ip addr show
+arp-scan --interface=eth0 --localnet
 ```
 - `docker inspet <container name>` gives us all the networking info ...
 - `docker run -d --network=host <name of network> /webapp` runs in the same network as host 
@@ -50,7 +55,6 @@ apt update && apt install -y arp-scan iputils-ping iproute2`
 - e.g.: 
     - `docker network create --driver=bridge app-net; docker run -d --name=app-db --net=app-net -p 27017:27017 mongo:3`
     
- 
 
 ###MOUNTING/STORAGE
 - there are 3 types of storage (bind, volume, tmpfs)
