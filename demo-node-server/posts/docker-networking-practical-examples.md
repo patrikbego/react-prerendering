@@ -49,9 +49,16 @@ it has automatic DNS resolution...
 
 Here we created a new network and linked our container to them. In Docker when you create or run a container using Docker create or docker run, it does not publish any of its ports to the outside world.   
 There is a couple of things we need to be aware regarding Dockerfile and docker `run` command:
+
 - when you `EXPOSE` a port Dockerfile, the service in the container is not accessible from outside Docker, but from inside other Docker containers
+
+- that signals to a hosting service (for example azure) that it needs to bind to this port to access the application running inside. 
+For local network and docker netwokr 
+
 - and when you EXPOSE and use `docker run -p ...` flag, the service in the container is accessible from anywhere, even outside Docker
-That means that we need to first add a line to Dockerfile with `EXPOSE 3000`, assuming that we are running the the app inside on port 3000. 
+
+That means that we need to first add a line to Dockerfile with `EXPOSE 3000`, assuming that we are running the app inside on port 3000. 
+For example if we do not `EXPOSE` port, service like azure will asume that application inside is runining on port 80, which will cause connection failure.
 
 Now we should be able to connect Dockerized _CLIENT_ to Dockerized _SERVER_ API on http://next-blog-api:9000.  
 Bear in mind that also code in our _CLIENT_-app we should point to the right URL based on where we run it (locally, in standalone container, swarm ...). It is best to have some logic which provides the URL dynamically or even better way, pass it in as a parameter.  

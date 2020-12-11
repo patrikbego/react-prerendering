@@ -40,9 +40,9 @@ The modern mode, "use strict"
 - ** = exponentiation 2^3 
 - '1' + 2 = 12; 2 + '1' = 21; 2 + 2 + '1' = 41
 - (1 + 2, 3 + 4) = 7 => each of values is evaluated but only last is returned
-##Operator precedence - from most important to least important 
+## Operator precedence - from most important to least important 
 - `(...); ?. ; ...++ ...--; R->L ! ~ +/- (unary plus/minus) ++... --... typeof; **; L->R * / %; L->R +/-; << >> >>>; < <= >= in instanceof; L->R == != === !===; & ^ | && || ?? ...?...:...; R->L = += -= **= *= /= %=; yield ... yield*; ... , ...`
-##Comparisons
+## Comparisons
 - "apple" > "pineapple" does dictionary comparison a is smaller than p result  false
 	- Letters with diacritical marks are "out of order":
 	- lower case is always bigger than uper case
@@ -51,10 +51,10 @@ The modern mode, "use strict"
 `if (x == a)  x = b; else x = c => x == a ? x = b : x = c`
 ## Logical operators
 - || && !
-##Nullish coalescing operator '??'
+## Nullish coalescing operator '??'
 - This is a recent addition to the language. Old browsers may need polyfills.
 - `x = a ?? b` equals to `x = (a !== null && a !== undefined) ? a : b;`
-##Loops: while and for
+## Loops: while and for
 ```
 for (;;) {
 		// repeats without limits
@@ -92,7 +92,7 @@ do {
 } while (condition);
 ```
 
-#The "switch" statement
+# The "switch" statement
 ```javascript
 switch(x) {
   case 'value1':  // if (x === 'value1')
@@ -103,13 +103,13 @@ switch(x) {
     ...
     [break]
 ```
-#Function expressions
+# Function expressions
 ```javascript
 let sayHi = function() {
   //this is function expresion
 };
 ```
-#Callback functions
+# Callback functions
 ```javascript
 function ask(question, yes, no) {
   if (confirm(question)) yes()
@@ -123,7 +123,7 @@ function showCancel() {
 }
 ask("Do you agree?", showOk, showCancel); // showOk, showCancel are callbacks (callback functions)
 ```
-#Arrow functions, the basics
+# Arrow functions, the basics
 ```javascript
 let sum = (a, b) => a + b;
 /* This arrow function is a shorter form of:
@@ -136,7 +136,7 @@ alert( sum(1, 2) ); // 3
 //another example
 let sayHi = () => alert("Hello!"); sayHi();
 ```
-#Coding Style
+# Coding Style
 - Google JavaScript Style Guide
 - Airbnb JavaScript Style Guide
 - Idiomatic.JS
@@ -148,7 +148,7 @@ let sayHi = () => alert("Hello!"); sayHi();
 - JSHint - more settings than JSLint.
 - ESLint - probably the newest one.
 
-#Automated testing with Mocha
+# Automated testing with Mocha
 ```javascript
 describe("pow", function() { // 
 
@@ -160,13 +160,13 @@ describe("pow", function() { //
 ```
 - In BDD, the spec goes first, followed by implementation. At the end we have both the spec and the code.
 
-#Polyfills
+# Polyfills
 - Babel, Webpack & Pollyfill all are transpiler. 
 	1. It rewrites modern JavaScript code into the previous standard.
 	2. Runs a script that updates/adds new functions (called "polyfill"). 
 	It "fills in" the gap and adds missing implementations.
 
-#Objects
+# Objects
 ```javascript
 let user = new Object(); // "object constructor" syntax
 let user = {};  // "object literal" syntax
@@ -192,7 +192,7 @@ function makeUser(name, age) {
 - To check if a property with the given key exists: `"key" in obj`.
 - To iterate over an object: `for (let key in obj)` loop.
 
-#Object copying, references
+# Object copying, references
 - "by reference" referes to address in memory it is not the duplicate
 - To "shallow" clone the object:
 `let clone = Object.assign({}, user)`
@@ -200,10 +200,10 @@ function makeUser(name, age) {
 contains object. Or use lodash library
 `_.cloneDeep(obj)`
 	
-#Garbage collection
+# Garbage collection
 - The basic garbage collection algorithm is called "mark-and-sweep".
 
-#Object methods, "this"
+# Object methods, "this"
 - simple example 
 ```javascript
 let user = {
@@ -219,10 +219,10 @@ user.sayHi(); // Hello!
 - A function that is a property of an object is called its method.
 - Arrow functions have no "this"
 
-#Constructor, operator "new"
+# Constructor, operator "new"
 - we can omit parentheses after new, if it has no arguments
 
-#Optional chaining '?.'
+# Optional chaining '?.'
 	alert(user.address ? user.address.street ? user.address.street.name : null : null); 
 	===
 	alert( user?.address?.street ); // undefined (no error)
@@ -230,22 +230,22 @@ user.sayHi(); // Hello!
 - `obj?.[prop]` - returns obj[prop] if obj exists, otherwise undefined.
 - `obj.method?.()` - calls obj.method() if obj.method exists, otherwise returns undefined.
 
-#Symbol type
+# Symbol type
 - `Symbol` is a primitive type for unique identifiers.
 
-#Object to primitive conversion
+# Object to primitive conversion
 - All objects are true in a boolean context
 - There are 3 types (hints) of it:
 	- "string" (for alert and other operations that need a string)
 	- "number" (for maths)
 	- "default" (few operators)
 
-#Data types
+# Data types
 Methods of primitives
 - There are 7 primitive types: string, number, bigint, boolean, symbol, null and undefined
 - Objects are "heavier" than primitives (memory and processing wise)
 
-#Numbers
+# Numbers
 - Regular numbers in JavaScript are stored in 64-bit format IEEE-754, also known as "double precision floating point numbers".  
 `let billion = 1e9;  // 1 billion, literally: 1 and 9 zeroes`   
 `let ms = 1e-6; // six zeroes to the left from 1`  
@@ -265,7 +265,7 @@ If we want to call a method directly on a number, like toString in the example a
 	- division by powers 10 is guaranteed to work well in the decimal system, but division by 3 is not.
 `alert( NaN === NaN ); // false`
 
-#Strings
+# Strings
 - we can use backticks `` for string. Has many advantages like enclosing expresion, multi line string ...
 `alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long unicode)`
 `alert( `My\n`.length ); // 3` length is a property not a function!
@@ -295,7 +295,7 @@ allows negative start
 - `str.trim()` - removes ("trims") spaces from the beginning and end of the string.
 - `str.repeat(n)` - repeats the string n times.
 
-#Arrays
+# Arrays
 - `push(...items)` adds items to the end.
 - `pop()` removes the element from the end and returns it.
 - `shift()` removes the element from the beginning and returns it.
@@ -316,7 +316,7 @@ They handle them as any objects, and it's not what we usually want.
 Instead, you can use `for..of` loop to compare arrays item-by-item.
 - `length` property is writable. If we decrease it, it will truncate array.
 
-#Array methods
+# Array methods
 - `delete arr[1]; // remove "go"` empties the space in array but does not shift the elements
 - To add/remove elements:
 	- `push(...items)` - adds items to the end,
@@ -1459,7 +1459,7 @@ hi(); // Error, because this is undefined
 - For all other operations, the reference type automatically becomes the property value (a function in our case).
 - The whole mechanics is hidden from our eyes. It only matters in subtle cases, such as when a method is obtained dynamically from the object, using an expression.
 
-##BigInt
+## BigInt
 ```javascript
 const bigint = 1234567890123456789012345678901234567890n;
 const sameBigint = BigInt("1234567890123456789012345678901234567890");

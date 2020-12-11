@@ -12,5 +12,5 @@ COPY . /next-node-server/
 # install dependencies
 RUN npm install
 # start app
-EXPOSE 8888
+EXPOSE 8080
 CMD node post-api.js

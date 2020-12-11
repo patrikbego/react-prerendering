@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-let API_BASE_URL = process.env.API_URL + '/api/post'
+let API_BASE_URL = process.env.API_URL + '/api/user'
 
 export async function getUserData(id) {
   let user;

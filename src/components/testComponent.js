@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { render, fireEvent } from '@testing-library/react'
 
-class CostInput extends React.Component {
+class CostInput extends Component {
   state = {
     value: '',
   }

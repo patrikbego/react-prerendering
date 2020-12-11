@@ -1,9 +1,17 @@
 import React from 'react';
-import {render, screen} from "@testing-library/react";
+import {render} from "@testing-library/react";
 import ShareFooter from "./shareFooter";
 
 it('renders mainList component correctly', () => {
-  const mockData = {shareUrl: 'test1', imageUrl: 'test2', title: 'test'}
+  const mockData = {
+    mddata: "test",
+    meta: {
+      title: "fileName",
+      description: "test description",
+      keywords: "NI at the moment",
+      image: "/images/profile.jpg"
+    }
+  }
   const tree = render(<ShareFooter postData={mockData}/>);
   expect(tree).toMatchSnapshot();
 
@@ -15,5 +23,5 @@ it('renders mainList component correctly', () => {
 it('renders mainList component in-correctly', () => {
   expect(() => {
     render(<ShareFooter/>);
-  }).toThrow("Cannot read property 'shareUrl' of undefined")
+  }).toThrow("Cannot read property 'meta' of undefined")
 });

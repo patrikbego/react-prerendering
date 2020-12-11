@@ -1,25 +1,25 @@
 import Head from 'next/head'
 import React from 'react';
-import Layout from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import {getSortedPostsData} from '../api/posts'
 import MainList from "../components/mainList";
 import {getUserData} from "../api/users";
+import MainLayout from "../components/mainLayout";
 
 export default function Home({postsData, blogger}) {
   return (
-    <Layout postsData home user={blogger}>
+    <MainLayout home>
       <Head>
         <title>{blogger.siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>{blogger.about}</p>
+        <p>About Code and Life Hacking</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <h2 className={utilStyles.headingLg}></h2>
         <MainList postsData={postsData}/>
       </section>
-    </Layout>
+    </MainLayout>
   )
 }
 

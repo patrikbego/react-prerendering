@@ -10,7 +10,7 @@ export async function getSortedPostsData() {
   try {
     const res = await fetch(`${API_BASE_URL}/names`)
     fileNames = await res.json();
-    console.log(fileNames);
+    console.log('fileNames: ' + fileNames);
   } catch (err) {
     console.log(err);
   }
@@ -40,7 +40,6 @@ export async function handleDataPromise(fileName) {
   try {
     const res = await fetch(`${API_BASE_URL}/${id}.md`)
     data = await res.json();
-    console.log(data.mddata)
   } catch (err) {
     console.log(err);
   }
@@ -65,6 +64,7 @@ export async function getPostData(id) {
   }
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(data.mddata)
+  const meta = data.meta;
 
   // Use remark to convert markdown into HTML string
   const processedContent = await remark()
@@ -75,8 +75,7 @@ export async function getPostData(id) {
   // Combine the data with the id and contentHtml
   return {
     id,
-    shareUrl: `${API_BASE_URL}/${id}.md`,
-    imageUrl: `${API_BASE_URL}/${id}.md`,
+    meta,
     contentHtml,
     ...matterResult.data
   }

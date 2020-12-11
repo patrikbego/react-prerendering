@@ -13,7 +13,6 @@ describe("App", () => {
     ).toBeInTheDocument();
   });
 
-
   it("renders without crashing", () => {
 
     const list1 = [{id: 'test.md', date: '2021-01-01', title: 'test'}];
@@ -26,12 +25,15 @@ describe("App", () => {
 
   it("renders data list", async () => {
 
-    let mockResponse1 = JSON.stringify({
-      0: "test.md"
-    });
+    let mockResponse1 = JSON.stringify({ 0: "test.md" });
     fetch.mockResponseOnce(mockResponse1);
+
     let mockResponse = JSON.stringify({mddata: "test"});
     fetch.mockResponseOnce(mockResponse);
+
+    let mockResponse2 = JSON.stringify(user);
+    fetch.mockResponseOnce(mockResponse2);
+
     const response = await getServerSideProps();
     expect(response.props.postsData[0].id).toEqual("test")
   });

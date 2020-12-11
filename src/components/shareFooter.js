@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {
   FacebookShareButton,
   FacebookMessengerShareButton,
@@ -45,14 +45,14 @@ import {
 } from "react-share";
 import styles from "./shareFooter.module.css";
 
-export default function ShareFooter({postData}) {
+export default function ShareFooter({postData, shareUrl = "https://bego.tips"}) {
 
   return (
     <div className={`${styles.shareMainContainer}`}>
       <div className={`${styles.shareContainer}`}>
         <FacebookShareButton
-          url={postData.shareUrl}
-          quote={postData.title}
+          url={shareUrl}
+          quote={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <FacebookIcon size={32} round/>
@@ -61,7 +61,7 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <FacebookMessengerShareButton
-          url={postData.shareUrl}
+          url={shareUrl}
           appId="521270401588372"
           className={`${styles.shareContainerButton}`}
         >
@@ -71,8 +71,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <TwitterShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <TwitterIcon size={32} round/>
@@ -81,8 +81,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <TelegramShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <TelegramIcon size={32} round/>
@@ -91,8 +91,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <WhatsappShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           separator=":: "
           className={`${styles.shareContainerButton}`}
         >
@@ -101,15 +101,15 @@ export default function ShareFooter({postData}) {
       </div>
 
       <div className={`${styles.shareContainer}`}>
-        <LinkedinShareButton url={postData.shareUrl} className={`${styles.shareContainerButton}`}>
+        <LinkedinShareButton url={shareUrl} className={`${styles.shareContainerButton}`}>
           <LinkedinIcon size={32} round/>
         </LinkedinShareButton>
       </div>
 
       <div className={`${styles.shareContainer}`}>
         <PinterestShareButton
-          url={postData.shareUrl}
-          media={`${postData.imageUrl}`}
+          url={shareUrl}
+          media={`${postData.meta.image}`}
           className={`${styles.shareContainerButton}`}
         >
           <PinterestIcon size={32} round/>
@@ -118,8 +118,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <VKShareButton
-          url={postData.shareUrl}
-          image={`${postData.imageUrl}`}
+          url={shareUrl}
+          image={`${postData.meta.image}`}
           className={`${styles.shareContainerButton}`}
         >
           <VKIcon size={32} round/>
@@ -128,8 +128,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <OKShareButton
-          url={postData.shareUrl}
-          image={`${postData.imageUrl}`}
+          url={shareUrl}
+          image={`${postData.meta.image}`}
           className={`${styles.shareContainerButton}`}
         >
           <OKIcon size={32} round/>
@@ -139,8 +139,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <RedditShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           windowWidth={660}
           windowHeight={460}
           className={`${styles.shareContainerButton}`}
@@ -151,8 +151,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <TumblrShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <TumblrIcon size={32} round/>
@@ -161,9 +161,9 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <LivejournalShareButton
-          url={postData.shareUrl}
-          title={postData.title}
-          description={postData.shareUrl}
+          url={shareUrl}
+          title={postData.meta.title}
+          description={shareUrl}
           className={`${styles.shareContainerButton}`}
         >
           <LivejournalIcon size={32} round/>
@@ -172,8 +172,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <MailruShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <MailruIcon size={32} round/>
@@ -182,8 +182,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <EmailShareButton
-          url={postData.shareUrl}
-          subject={postData.title}
+          url={shareUrl}
+          subject={postData.meta.title}
           body="body"
           className={`${styles.shareContainerButton}`}
         >
@@ -192,8 +192,8 @@ export default function ShareFooter({postData}) {
       </div>
       <div className={`${styles.shareContainer}`}>
         <ViberShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <ViberIcon size={32} round/>
@@ -202,8 +202,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <WorkplaceShareButton
-          url={postData.shareUrl}
-          quote={postData.title}
+          url={shareUrl}
+          quote={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <WorkplaceIcon size={32} round/>
@@ -212,8 +212,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <LineShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <LineIcon size={32} round/>
@@ -222,9 +222,9 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <WeiboShareButton
-          url={postData.shareUrl}
-          title={postData.title}
-          image={`${postData.imageUrl}`}
+          url={shareUrl}
+          title={postData.meta.title}
+          image={`${postData.meta.image}`}
           className={`${styles.shareContainerButton}`}
         >
           <WeiboIcon size={32} round/>
@@ -233,8 +233,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <PocketShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <PocketIcon size={32} round/>
@@ -243,8 +243,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <InstapaperShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           className={`${styles.shareContainerButton}`}
         >
           <InstapaperIcon size={32} round/>
@@ -253,8 +253,8 @@ export default function ShareFooter({postData}) {
 
       <div className={`${styles.shareContainer}`}>
         <HatenaShareButton
-          url={postData.shareUrl}
-          title={postData.title}
+          url={shareUrl}
+          title={postData.meta.title}
           windowWidth={660}
           windowHeight={460}
           className={`${styles.shareContainerButton}`}
