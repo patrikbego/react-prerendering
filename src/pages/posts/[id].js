@@ -6,6 +6,7 @@ import utilStyles from '../../styles/utils.module.css'
 import React, {useEffect, useState} from "react";
 import ShareFooter from "../../components/shareFooter";
 import {getUserData} from "../../api/users";
+import markdownStyle from "./markdown.module.css"
 
 export default function Post({postData, blogger, shareUrl}) {
 
@@ -45,7 +46,7 @@ export default function Post({postData, blogger, shareUrl}) {
       <Head>
         <title>{postData.meta.title}</title>
       </Head>
-      <article>
+      <article className={markdownStyle.markdown_body}>
         {/*{shareUrl}{todos}*/}
         <h1 className={utilStyles.headingXl}>{postData.meta.title}</h1>
         <div className={utilStyles.lightText}>

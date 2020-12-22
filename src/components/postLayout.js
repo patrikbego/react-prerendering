@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import utilStyles from "../styles/utils.module.css";
 import styles from './postLayout.module.css'
 import Link from 'next/link'
@@ -17,9 +16,9 @@ export default function PostLayout({children, user: blogger, postData, shareUrl 
           <Link href="/">
             <a>
               <Image
-                src={postData.meta.image}
-                // className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                 alt={blogger.name}
+                src={postData.meta.image}
+                layout="intrinsic"
                 width={500}
                 height={500}
               />

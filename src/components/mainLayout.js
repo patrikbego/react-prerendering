@@ -27,9 +27,9 @@ export default function MainLayout({children, home}) {
       <header className={styles.header}>
         <>
           <Image
-            src="/images/front1.jpg"
-            // className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
             alt="bego.tips"
+            src="/images/front1.jpg"
+            layout="intrinsic"
             width={500}
             height={500}
           />
