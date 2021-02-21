@@ -9,7 +9,7 @@ To run the node server, execute in command line: `node demo-node-server/post-api
 To run the project, execute in command line: `npm run start` (for debug mode : `npm run dev`).
 That will start the web server on http://localhost:3000
 
-To run it with Docker: 
+To run it with Docker:  
     - `docker build -t next-blog .`  
     - `docker build -t next-blog-api demo-node-server`  
     - `docker network create --driver=bridge next-net`  
