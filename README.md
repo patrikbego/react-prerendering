@@ -10,11 +10,11 @@ To run the project, execute in command line: `npm run start` (for debug mode : `
 That will start the web server on http://localhost:3000
 
 To run it with Docker:  
-    - `docker build -t next-blog .`  
-    - `docker build -t next-blog-api demo-node-server`  
-    - `docker network create --driver=bridge next-net`  
-    - `docker run -d --name=next-blog-api --network=next-net -p 8888:8080 next-blog-api`  
-    - `docker run -d --network=next-net -p 3002:3000 next-blog`  
+- `docker build -t next-blog .`  
+- `docker build -t next-blog-api demo-node-server`  
+- `docker network create --driver=bridge next-net`  
+- `docker run -d --name=next-blog-api --network=next-net -p 8888:8080 next-blog-api`  
+- `docker run -d --network=next-net -p 3002:3000 next-blog`  
 
 #### Next js project structure: ./pages (Static generation and server-side rendering )
 Some guides regarding next:
